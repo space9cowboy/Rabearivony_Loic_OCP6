@@ -14,9 +14,10 @@
 
 .headerNav {
     display: flex;
-    width: 18%;
+    
     justify-content: space-between;
     padding-right: 7%;
+    
 }
 
 .headerLink {
@@ -25,6 +26,8 @@
     font-style: normal;
     font-weight: 500;
     text-decoration: none;
+    margin-left: 25px;
+    
     
 }
 
@@ -33,5 +36,29 @@
     color : #FF6060;
 }
 
+@media (max-width: 768px) {
+    .headerLogo img.normalLogo {
+        display : none;
+    }
 
+    .headerLogo img.smallLogo {
+        display : block;
+    }
+
+    .headerLink {
+        color: #FF6060;
+        text-align: right;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 142.6%; /* 17.112px */
+    }
+}
+
+@media (min-width: 769px) {
+    .headerLogo img.smallLogo {
+        display: none;
+    }
+}
 

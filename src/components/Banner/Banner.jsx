@@ -8,7 +8,8 @@ function Banner() {
       
      <div className='bannerContent'>
        <h2 className='bannerTitle'>
-         Chez vous, partout et ailleurs
+         Chez vous, 
+         <div className="breakLine">partout et ailleurs</div>
        </h2>
      </div>
     </div>
