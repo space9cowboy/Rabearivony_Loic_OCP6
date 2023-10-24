@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 2%;
+}
+
+.headerLogo {
+    padding-left: 7%;
+}
+
+.headerNav {
+    display: flex;
+    width: 18%;
+    justify-content: space-between;
+    padding-right: 7%;
+}
+
+.headerLink {
+    color : #FF6060;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: none;
+    
+}
+
+.headerLink:hover {
+    text-decoration: underline;
+    color : #FF6060;
+}
+
+
+

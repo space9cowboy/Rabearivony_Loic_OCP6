@@ -7,12 +7,13 @@ import Error from './pages/Error/Error'
 import About from './pages/About/About'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import "./App.css"
 
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className='app'>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,9 +1,17 @@
 import React from 'react'
 import "./Banner.css"
 
+
 function Banner() {
   return (
-    <div>Banner</div>
+    <div className='banner'>
+      
+     <div className='bannerContent'>
+       <h2 className='bannerTitle'>
+         Chez vous, partout et ailleurs
+       </h2>
+     </div>
+    </div>
   )
 }
 
