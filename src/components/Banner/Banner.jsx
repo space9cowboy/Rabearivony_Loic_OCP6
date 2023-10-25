@@ -9,7 +9,7 @@ function Banner() {
      <div className='bannerContent'>
        <h2 className='bannerTitle'>
          Chez vous, 
-         <div className="breakLine">partout et ailleurs</div>
+         <span className='bannerTitleNext'>{" "}partout et ailleurs</span>
        </h2>
      </div>
     </div>

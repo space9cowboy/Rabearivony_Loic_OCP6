@@ -1,11 +1,13 @@
 import React from 'react'
 import "./About.css"
-import Banner from "../../components/Banner/Banner"
+import BannerImgAbout from "../../assets/banner-about.jpeg"
+import BannerProps from '../../components/BannerProps/BannerProps'
+
 
 function About() {
   return (
     <div className='about'>
-        <Banner />
+        <BannerProps img={BannerImgAbout} textFirst="" textSecond="" />
         <h1>
             About 
         </h1>
