@@ -1,0 +1,59 @@
+.bannerProps {
+  width: 100%;
+  height: calc(100vh * 0.25);
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 10% 50%;
+    position: absolute;
+    border-radius: 1.5rem;
+    filter: brightness(70%);
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__title {
+    color: white;
+    font-family: Montserrat;
+    font-size: calc(2vw + 2vh);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 142.6%; /* 68.448px */
+    display: inline;
+  }
+
+}
+
+ @media (max-width: 768px) {
+  .bannerProps {
+    height: calc(100vh * 0.15);
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 10%;
+    }
+  
+    &__title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+  }
+
+ 
+}
