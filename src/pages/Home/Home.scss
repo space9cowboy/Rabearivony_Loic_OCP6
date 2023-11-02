@@ -1,0 +1,38 @@
+.home {
+    border : 1px solid burlywood;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-top: 2%;
+    height: 100% !important;
+
+    &__Container {
+        background-color: #F6F6F6;
+        border : 1px solid cyan; 
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 70px;
+        grid-row-gap: 70px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding : 2rem;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        height: 255px;
+
+        &__Container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding : 0;
+            grid-row-gap : 40px; 
+            
+
+        }
+    }
+}
+

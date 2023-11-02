@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 
 const Card = ({ annonce }) => {
   return (
-    <Link className="card" to="/logement">
-        <img src={annonce.cover} alt={annonce.title} />
+    <Link className="card" to="/logement/{annonce.id}">
+        <img src={annonce.cover} alt={annonce.title} className="card__img" />
         <div className='card__content'>
         <p className='card__title'>{annonce.title}</p>
         </div>

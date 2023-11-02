@@ -1,6 +1,5 @@
 .app {
-    border : 1px solid red ;
+    border : 1px solid magenta ;
     font-family : 'Montserrat', sans-serif;
-    
-
+    height: 100%;
 }
