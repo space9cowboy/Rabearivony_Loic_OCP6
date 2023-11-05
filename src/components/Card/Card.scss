@@ -4,6 +4,12 @@
     position: relative;
     border-radius: 0.8rem;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Ajout d'une transition pour la mise à l'échelle et l'ombre
+
+    &:hover {
+      transform: scale(1.05); // Applique une mise à l'échelle sur le survol
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); // Ajoute une ombre sur le survol
+    }
     
     &__img {
       width: 100%;
@@ -32,17 +38,16 @@
       font-weight: 500;
       line-height: 142.6%; /* 68.448px */
       display: inline;
+      padding: 10px;
     }
   }
 
 @media (max-width: 768px) {
   .card {
     height : 225px;
-    
 
-    &__img {
-      width: 100%;
-
+    &__title {
+      font-size: calc(1.5vw + 1.5vh);
     }
   }
 }
