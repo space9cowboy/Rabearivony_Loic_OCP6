@@ -1,7 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 import "./DropdownMenu.scss"
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
+import Faq from "./Faq"
+
 
 function DropdownMenu(props) {
 
@@ -9,9 +11,8 @@ function DropdownMenu(props) {
     const title = "Description";
 
   return (
-    <div>
-        <Dropdown className="dick" options={props.options} 
-         placeholder={props.title} />
+    <div className='container'>
+        
     </div>
   )
 }

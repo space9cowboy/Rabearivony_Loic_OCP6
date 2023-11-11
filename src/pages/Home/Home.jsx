@@ -4,11 +4,14 @@ import "./Home.scss"
 import BannerProps from '../../components/BannerProps/BannerProps'
 import BannerImg from "../../assets/banner.png"
 import Card from "../../components/Card/Card"
-import CardIlmg from "../../assets/logement.jpeg"
+
 import axios from 'axios'
 
 
+
+
 function Home() {
+  
   const [annonces, setAnnonces] = useState([]);
 
   useEffect(() => {
