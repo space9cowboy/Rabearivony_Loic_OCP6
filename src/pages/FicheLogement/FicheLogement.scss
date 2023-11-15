@@ -6,16 +6,43 @@
     height: 100% !important;
     
     &__carrousel {
-        height: 500px;
+        height: 45vh;
         width: 100%;
-    }
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
 
-    &__swiper {
-        height: 50vh;
-        border: 1px solid green;
-        color: white !important;
-    }
+        &__pagination {
+            position:absolute;
+            color: white;
+            bottom: 10px;
+            font-size: 15px;
+        }
 
+        &__leftchevron,
+        &__rightchevron {
+          position: absolute;
+          z-index: 1;
+          top: 50%;
+          font-size: 75px;
+          transform: translateY(-50%);
+          cursor: pointer;
+          transition: color 0.5s ease-in-out;
+        }
+      
+        &__leftchevron {
+          left: 10px;
+        }
+      
+        &__rightchevron {
+          right: 10px;
+        }
+      
+       
+    }
+    
     &__card { 
         height: 100%;
         overflow: hidden;
@@ -27,6 +54,8 @@
         object-fit: cover;
         border-radius: 25px;
     }
+
+   
 
     &__info {
          
@@ -73,22 +102,31 @@
     }
 
     &__tags {
-        background-color: #FF6060;
+       
+        border: 1px solid orange;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+
+        gap: 10px;
+        &__tag {
+            background-color: #FF6060;
+
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+        
         color: #fff;
        // padding: 5px 10px;
         //margin-right: 5px;
         border-radius: 10px;
         font-size: 14px;
-        display: flex;
-        flex-direction: row;
-        justify-content:center;
-        align-items: center;
+        
         width: 115px;
         height: 25px;
         flex-shrink: 0;
-
-        &__tag {
-            margin: 10px;
         }
     }
 
@@ -97,20 +135,34 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
+        border : 1px solid blue;
         
         
         &__host {
             color: #FF6060;
+            
             text-align: right;
             font-family: Montserrat;
             font-size: 18px;
             font-style: normal;
             font-weight: 500;
             line-height: 142.6%; /* 25.668px */
+
+            &__name {
+                display : flex;
+                justify-content : space-between;
+                align-items: center;
+            }
            
             span {
                 margin: 30px;
             } 
+
+            img {
+                border-radius: 60px;
+                width: 60px;
+                height: 60px;
+            }
         }
     }
 
@@ -152,74 +204,4 @@
 
 }
 
-.faqs {
-    width: 100%;
-    //max-width: 768px;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    //padding: 15px;
-    justify-content: center;
-    align-items:center;
-    
-  }
-  
-  .faqs .faq {
-    margin: 14px;
-    padding: 12px;
-    background: #ff6060;
-    border-radius: 5px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    
-  }
-  
-  .faqs .faq .faq-question {
-    position: relative;
-    font-size: 20px;
-   
-    transition: all 0.4s ease;
-    color : white;
-    display: flex;
-    flex-direction: row;
-    align-items: normal;
-    justify-content: space-between;
-    
-    
-    
-  }
 
-  .faqs .faq .faq-question button {
-      color : white;
-      background-color: #ff6060;
-      border: none;
-      
-  }
-  
-  
-
-  .faqs .faq .faq-answer {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    background-color: #F6F6F6 ;
-    color:#ff6060;
-    
-    
-  }
-  
-  .faqs .faq.open .faq-question {
-    margin-bottom: 15px;
-  }
-  
-  
-  .faqs .faq.open .faq-answer {
-    max-height: 1000px;
-    opacity: 1;
-  }
-.swiper-button-next, .swiper-rtl .swiper-button-prev {
-    color: white !important;
-}
-.swiper-button-prev, .swiper-button-next {
-    color: white !important;
-}

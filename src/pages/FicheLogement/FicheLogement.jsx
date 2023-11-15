@@ -1,29 +1,21 @@
-import { useState, useEffect } from 'react'
-import "./FicheLogement.scss"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper/modules'
-import 'swiper/css/pagination';
-
-import 'swiper/css'
-import 'swiper/css/navigation'
-
-//import image poute les tests
-import Cosy from '../../assets/cosy.jpeg'
-import Cosy2 from '../../assets/cosy2.jpeg'
-import Cosy3 from '../../assets/cosy3.jpeg'
-
+import { faChevronLeft, faChevronRight, faStar } from '@fortawesome/free-solid-svg-icons';
 //import icons 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { useParams } from 'react-router-dom'
-
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 //import faq
-import Faq from "../../components/Faq/Faq"
+import Faq from "../../components/Faq/Faq";
+import "./FicheLogement.scss";
+
+
+
+
 
 
 
 const FicheLogement = () => {
   let { id } = useParams();
+  
   const [faqs, setFaqs] = useState([
     {
       question: "Fiabilité",
@@ -48,7 +40,9 @@ const FicheLogement = () => {
       open: false
     }
   ]);
+  
   const [annonce, setAnnonce] = useState(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const fetchAnnonce = async () => {
@@ -72,6 +66,14 @@ const FicheLogement = () => {
     fetchAnnonce();
   }, [id]);
 
+  const handlePrevImage = () => {
+    setCurrentImage((prev) => (prev === 0 ? annonce.pictures.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImage((prev) => (prev === annonce.pictures.length - 1 ? 0 : prev + 1));
+  };
+
 
   const toggleFAQ = index => {
     setFaqs(
@@ -90,6 +92,24 @@ const FicheLogement = () => {
   if (!annonce) {
     return <div>Loading...</div>; // Ou une autre indication de chargement
   }
+
+  const renderRatingStars = () => {const filledStars = parseInt(annonce.rating, 10);
+    const emptyStars = 5 - filledStars;
+
+    const stars = [];
+
+    // Stars pleines
+    for (let i = 0; i < filledStars; i++) {
+      stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: '#FF6060' }} />);
+    }
+
+    // Stars vides
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FontAwesomeIcon key={i + filledStars} icon={faStar} style={{ color: 'grey' }} />);
+    }
+
+    return stars;
+  }
  
   return (
     <div className='logement'>
@@ -97,24 +117,22 @@ const FicheLogement = () => {
      
       <div className='logement__carrousel'>
         
-        <Swiper 
-        loop={true}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true} modules={[Pagination, Navigation]} className='mySwiper logement__swiper'>
-          {annonce.pictures ? (
-          annonce.pictures.map((picture, index) => (
-            <SwiperSlide key={index}>
-              <div
-                 className='logement__card'><img src={picture} className="logement__img"/>
-              </div>
-              </SwiperSlide>
-          ))
-        ) : (
-          <SwiperSlide>Tags non disponibles</SwiperSlide>
+      {annonce.pictures && annonce.pictures.length > 1 && (
+        <>
+           <FontAwesomeIcon icon={faChevronLeft} className="logement__carrousel__leftchevron" style={{ color: "#ffffff" }} onClick={handlePrevImage} />
+
+            <img src={annonce.pictures[currentImage]} className="logement__img" alt={`Image ${currentImage + 1}`} />
+
+            <FontAwesomeIcon icon={faChevronRight} className
+            ="logement__carrousel__rightchevron" style={{ color: "#ffffff"}} onClick={handleNextImage} />
+
+            <div className="logement__carrousel__pagination">{`${currentImage + 1}/${annonce.pictures.length}`}</div>
+          </>
         )}
-        </Swiper>
+        
+        {annonce.pictures.length === 1 && (
+            <img src={annonce.pictures[0]} className="logement__img" alt={`Image 1`} />
+          )}
       </div>
 
       
@@ -124,20 +142,27 @@ const FicheLogement = () => {
               <h2 className='logement__title__h2'>{annonce.title}</h2>
               <span className='logement__title__localisation'>{annonce.location}</span>
               <div className='logement__tags'>
-                  <span className='logement__tags__tag'>Tag 1</span>
+                  
+              {annonce.tags ? (
+              annonce.tags.map((tag, index) => (
+              <span key={index} className='logement__tags__tag'>{tag}</span>
+          ))
+        ) : (
+          <span>Tags non disponibles</span>
+        )}
+                  
               </div>
               
             </div>
 
             <div className='logement__details'>
               <div className='logement__details__host'>
+                <div className="logement__details__host__name">
                 <span>{annonce.host.name}</span>
+                <img src={annonce.host.picture} className='logement__details__host__img' />
+                </div>
                 <div className='logement__rating'>
-                  <FontAwesomeIcon className="logement__rating__star" icon={faStar} />
-                  <FontAwesomeIcon className="logement__rating__star" icon={faStar} />
-                  <FontAwesomeIcon className="logement__rating__star" icon={faStar} />
-                  <FontAwesomeIcon className="logement__rating__star" icon={faStar} />
-                  <FontAwesomeIcon className="logement__rating__star" icon={faStar} />
+                  {renderRatingStars()}
                 </div>
               </div>
             </div>
