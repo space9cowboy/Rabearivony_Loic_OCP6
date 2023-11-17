@@ -3,8 +3,10 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+//import faq
 
 import "./FicheLogement.scss";
+
 
 // import components
 import Tags from '../../components/Tags/Tags';
@@ -16,30 +18,7 @@ import Equipements from '../../components/Equipements/Equipements';
 const FicheLogement = () => {
   let { id } = useParams();
   
-  const [faqs, setFaqs] = useState([
-    {
-      question: "Fiabilité",
-      answer:
-      "Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont régulièrement vérifiées par nos équipes.",
-      open: false
-    },
-    {
-      question: "Respect",
-      answer: "La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entraînera une exclusion de notre plateforme.",
-      open: false
-    },
-    {
-      question: "Service",
-      answer: "La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entraînera une exclusion de notre plateforme.",
-      open: false
-    },
-    {
-      question:
-        "Sécurité",
-      answer: "La sécurité est la priorité de Kasa. Aussi bien pour nos hôtes que pour les voyageurs, chaque logement correspond aux critères de sécurité établis par nos services. En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes.",
-      open: false
-    }
-  ]);
+  
   
   const [annonce, setAnnonce] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
@@ -124,9 +103,9 @@ const FicheLogement = () => {
 
             <div className='logement__details'>
               
-                <div className='logement__title__host'>
-                  <span className='logement__title__host__name'>{annonce.host.name}</span>
-                  <img src={annonce.host.picture} className='logement__title__host__img' />
+                <div className='host'>
+                  <span className='hostname'>{annonce.host.name}</span>
+                  <img src={annonce.host.picture} className='imgrond' />
                 </div>
 
                 <div className='logement__rating'>
@@ -136,11 +115,16 @@ const FicheLogement = () => {
             </div>
           </div>
 
-          <div className='faqs flex'>
+          <div className='faqs'>
             
-            <Description  className="dropdown" description={annonce.description} />
-
-            <Equipements className="dropdown" equipments={annonce.equipments} />
+            <div className="flex">
+              <div className='width-50'>
+                <Description  description={annonce.description} />
+              </div>
+              <div className="width-50">
+                <Equipements  equipments={annonce.equipments} />
+              </div>
+            </div>
           
          </div>
         </div>

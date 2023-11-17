@@ -39,6 +39,7 @@
  @media (max-width: 768px) {
   .bannerProps {
     height: calc(100vh * 0.15);
+    border-radius: 15px;
     
 
     &__content {

@@ -1,7 +1,7 @@
 // Description.jsx
 
 import React, { useState } from 'react';
-//import "./Description.scss";
+import "./Description.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
