@@ -1,16 +1,16 @@
-import { faChevronLeft, faChevronRight, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 //import icons 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-//import faq
-import Faq from "../../components/Faq/Faq";
+
 import "./FicheLogement.scss";
 
-
-
-
-
+// import components
+import Tags from '../../components/Tags/Tags';
+import RatingStars from '../../components/RatingStars/RatingStars';
+import Description from '../../components/Description/Description';
+import Equipements from '../../components/Equipements/Equipements';
 
 
 const FicheLogement = () => {
@@ -75,46 +75,17 @@ const FicheLogement = () => {
   };
 
 
-  const toggleFAQ = index => {
-    setFaqs(
-      faqs.map((faq, i) => {
-        if (i === index) {
-          faq.open = !faq.open;
-        } else {
-          faq.open = false;
-        }
-
-        return faq;
-      })
-    );
-  };
+  
 
   if (!annonce) {
     return <div>Loading...</div>; // Ou une autre indication de chargement
   }
 
-  const renderRatingStars = () => {const filledStars = parseInt(annonce.rating, 10);
-    const emptyStars = 5 - filledStars;
-
-    const stars = [];
-
-    // Stars pleines
-    for (let i = 0; i < filledStars; i++) {
-      stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: '#FF6060' }} />);
-    }
-
-    // Stars vides
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<FontAwesomeIcon key={i + filledStars} icon={faStar} style={{ color: 'grey' }} />);
-    }
-
-    return stars;
-  }
+  
  
   return (
     <div className='logement'>
-      
-     
+
       <div className='logement__carrousel'>
         
       {annonce.pictures && annonce.pictures.length > 1 && (
@@ -139,52 +110,39 @@ const FicheLogement = () => {
         <div className='logement__info'>
           <div className='logement__first'>
             <div className='logement__title'>
-              <h2 className='logement__title__h2'>{annonce.title}</h2>
-              <span className='logement__title__localisation'>{annonce.location}</span>
-              <div className='logement__tags'>
-                  
-              {annonce.tags ? (
-              annonce.tags.map((tag, index) => (
-              <span key={index} className='logement__tags__tag'>{tag}</span>
-          ))
-        ) : (
-          <span>Tags non disponibles</span>
-        )}
-                  
-              </div>
               
+
+                <h2 className='logement__title__h2'>{annonce.title}</h2>
+                <span className='logement__title__localisation'>{annonce.location}</span>
+                <div className='logement__tags'>  
+                  <Tags tags={annonce.tags} />
+                </div>
+
+              
+             
             </div>
 
             <div className='logement__details'>
-              <div className='logement__details__host'>
-                <div className="logement__details__host__name">
-                <span>{annonce.host.name}</span>
-                <img src={annonce.host.picture} className='logement__details__host__img' />
+              
+                <div className='logement__title__host'>
+                  <span className='logement__title__host__name'>{annonce.host.name}</span>
+                  <img src={annonce.host.picture} className='logement__title__host__img' />
                 </div>
+
                 <div className='logement__rating'>
-                  {renderRatingStars()}
+                  <RatingStars rating={annonce.rating} />
                 </div>
-              </div>
+              
             </div>
           </div>
 
-            <div className='faqs flex'>
-              <div className='logement__second__dropdown'>
-                  <span>description</span>
-                  {faqs.map((faq, index) => (
-                  <Faq faq={faq} index={index} key={index} toggleFAQ={toggleFAQ} />
-        ))}
-                  
-              </div>
-              <div className='logement__second__dropdown'>
-                  <span>equipement</span>
-                  {faqs.map((faq, index) => (
-                  <Faq faq={faq} index={index} key={index} toggleFAQ={toggleFAQ} />
-        ))}
-                  
-              </div>
-              
-            </div>
+          <div className='faqs flex'>
+            
+            <Description  className="dropdown" description={annonce.description} />
+
+            <Equipements className="dropdown" equipments={annonce.equipments} />
+          
+         </div>
         </div>
       
 

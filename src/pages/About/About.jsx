@@ -51,7 +51,7 @@ function About() {
     <div className='about'>
         <BannerProps img={BannerImgAbout} textFirst="" textSecond="" />
        
-        <div className="faqs">
+        <div className="faqs gap">
         {faqs.map((faq, index) => (
           <Faq faq={faq} index={index} key={index} toggleFAQ={toggleFAQ} />
         ))}

@@ -7,9 +7,6 @@ import Card from "../../components/Card/Card"
 
 import axios from 'axios'
 
-
-
-
 function Home() {
   
   const [annonces, setAnnonces] = useState([]);

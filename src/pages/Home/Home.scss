@@ -1,21 +1,21 @@
 .home {
-    border : 1px solid burlywood;
-    margin-left: 5%;
-    margin-right: 5%;
+    
+    margin-left: 7%;
+    margin-right: 7%;
     margin-top: 2%;
     height: 100% !important;
 
     &__Container {
         background-color: #F6F6F6;
-        border : 1px solid cyan; 
-        border-radius: 20px;
+        
+        border-radius: 25px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-column-gap: 40px;
-        grid-row-gap: 40px;
-        margin-top: 25px;
-        margin-bottom: 20px;
-        padding : 2rem;
+        grid-column-gap: 45px;
+        grid-row-gap: 45px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+        padding : 3rem;
         height: 100% !important;
     }
 }

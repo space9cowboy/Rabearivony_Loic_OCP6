@@ -25,7 +25,7 @@ const Faq = ({ faq, index, toggleFAQ}) => {
         
 
       <div className="faq-question">{faq.question}
-          <FontAwesomeIcon icon={icon} />
+          <FontAwesomeIcon className="chevronicon" icon={icon} />
       </div>
 
       <div className="faq-answer">{faq.answer}</div>

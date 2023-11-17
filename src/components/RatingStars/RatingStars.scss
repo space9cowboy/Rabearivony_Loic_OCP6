@@ -1,0 +1,31 @@
+// ratingstar.scss
+.logement__rating {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  
+    
+    &__star {
+        margin-left: 13px;
+        width: calc(10px + 2vw);
+        height: calc(10px + 2vh);
+        flex-shrink: 0;
+        gap: 10px;
+        
+    }
+}
+
+
+@media (max-width: 768px) {
+    .logement__rating {
+        display: flex;
+        justify-content: flex-start;
+
+        &__star {
+            margin-left: 0;
+            margin-right: 5px;
+            
+        }
+    }
+
+}
