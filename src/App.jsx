@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom"
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import Home from "./pages/Home/Home"
 import FicheLogement from './pages/FicheLogement/FicheLogement'
@@ -21,8 +21,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/fiche/:id" element={<FicheLogement  />} />
-          <Route path="*" element={<Error />} />
+         
           <Route path="/about" element={<About />} />
+          <Route path="/fiche/*" element={<Error  />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
       </div>

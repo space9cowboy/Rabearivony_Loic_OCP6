@@ -14,6 +14,8 @@ import RatingStars from '../../components/RatingStars/RatingStars';
 import Description from '../../components/Description/Description';
 import Equipements from '../../components/Equipements/Equipements';
 
+import Error from '../Error/Error';
+
 
 const FicheLogement = () => {
   let { id } = useParams();
@@ -36,6 +38,7 @@ const FicheLogement = () => {
           setAnnonce(annonceData);
         } else {
           console.error("Annonce non trouvée");
+          
         }
       } catch (error) {
         console.error("Problème de requête", error);
@@ -53,11 +56,8 @@ const FicheLogement = () => {
     setCurrentImage((prev) => (prev === annonce.pictures.length - 1 ? 0 : prev + 1));
   };
 
-
-  
-
   if (!annonce) {
-    return <div>Loading...</div>; // Ou une autre indication de chargement
+    return (<Error />); // Ou une autre indication de chargement
   }
 
   
