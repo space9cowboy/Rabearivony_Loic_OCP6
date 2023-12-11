@@ -11,12 +11,13 @@ const Description = ({ description }) => {
   const toggleDescription = () => {
     setIsOpen(!isOpen);
   };
+ 
 
   return (
     <div className={`faq ${isOpen ? 'open' : ''}`}>
       <div className="faq-question" onClick={toggleDescription}>
         Description
-        <FontAwesomeIcon className="chevronicon" icon={isOpen ? faChevronDown : faChevronUp} />
+        <FontAwesomeIcon className={isOpen ? "rotateOpeningIcon _active " : "rotateClosingIcon"} icon={faChevronDown} />
       </div>
       {isOpen && (
         <div className="faq-answer">

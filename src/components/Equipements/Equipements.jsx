@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import "./Equipements.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Equipements = ({ equipments }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +16,8 @@ const Equipements = ({ equipments }) => {
     <div className={`faq ${isOpen ? 'open' : ''}`}>
       <div className="faq-question" onClick={toggleEquipements}>
         Équipements
-        <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronUp} />
-      </div>
+        <FontAwesomeIcon className={isOpen ? "rotateOpeningIcon _active " : "rotateClosingIcon"} icon={faChevronDown} />
+         </div>
       {isOpen && (
         <div className="faq-answer">
           <ul className='ul'>

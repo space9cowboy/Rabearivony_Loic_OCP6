@@ -4,6 +4,7 @@ import "../../styles.scss"
 import BannerImgAbout from "../../assets/banner-about.jpeg"
 import BannerProps from '../../components/BannerProps/BannerProps'
 import Faq from "../../components/Faq/Faq"
+import Dropdown from '../../components/Dropdown/Dropdown'
 
 
 
@@ -52,11 +53,12 @@ function About() {
         <BannerProps img={BannerImgAbout} textFirst="" textSecond="" />
        
         <div className="gap">
-          <div className="faqs gap">
+        <div className="faqs gap">
           {faqs.map((faq, index) => (
             <Faq faq={faq} index={index} key={index} toggleFAQ={toggleFAQ} />
           ))}
           </div>
+   
         </div>
 
        

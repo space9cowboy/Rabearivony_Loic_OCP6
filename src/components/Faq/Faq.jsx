@@ -2,30 +2,27 @@ import { useState } from "react";
 
 import "../../styles.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Faq = ({ faq, index, toggleFAQ}) => {
-  const [useIcon, setUseIcon] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
-  const toggleIcon = () => {
-    setUseIcon((prevUseIcon) => !prevUseIcon);
-  }
-
-  const icon = useIcon ? faChevronUp : faChevronDown; 
-  
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
    
   return (
     <div
-      className={"faq " + (faq.open ? "open" : "")}
+      className={"faq " + (faq.open ? "open" : "close")}
       key={index}
       onClick={() => {
         toggleFAQ(index);
-        toggleIcon();
+        toggleActive();
       }}>
         
 
       <div className="faq-question">{faq.question}
-          <FontAwesomeIcon className="chevronicon" icon={icon} />
+      <FontAwesomeIcon className={isActive ? "rotateOpeningIcon _active " : "rotateClosingIcon"} icon={faChevronDown} />
       </div>
 
       <div className="faq-answer">{faq.answer}</div>

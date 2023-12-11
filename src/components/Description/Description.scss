@@ -14,9 +14,11 @@
         align-items: normal;
         justify-content: space-between;
 
-        .chevron-icon {
+        .chevron-icon{
             transition: transform 0.3s ease;
+      
         }
+
     }
 
     &__answer {
@@ -26,14 +28,5 @@
         color:#ff6060;
     }
 
-    &.open {
-        .faqDropdown__question {
-            .chevron-icon {
-                transform: rotate(180deg);
-            }
-        }
-        .faqDropdown__answer {
-            border-top: none;
-        }
-    }
+   
 }
