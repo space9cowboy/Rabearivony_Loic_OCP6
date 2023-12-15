@@ -1,29 +1,45 @@
-import {useState} from 'react'
-import "./Dropdown.scss"
-
+import React, { useState } from 'react';
+import "./Dropdown.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const Dropdown = ({ faq, index, toggleFAQ}) => {
-    const [isActive, setIsActive] = useState(false);
+const Dropdown = ({ dropdown }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleActive = () => {
-      setIsActive(!isActive);
-    };
-  
-    return (
-      <div className='dropdown'>
-        <div key={index} id="panel" onClick={() => {
-            toggleActive;
-            toggleFAQ(index);
-        }}>{faq.question} 
-            <FontAwesomeIcon className={isActive ? "rotateOpeningIcon _active " : "rotateClosingIcon"} icon={faChevronDown} />
-        </div>
-        <div className={isActive ? "advanced-search _active" : "advanced-search"}>{faq.answer}
-        </div>
-       
-      </div>
-    );
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
-export default Dropdown
+  let answerContent;
+
+  // Vérification du type de données pour dropdown.answer
+  if (Array.isArray(dropdown.answer)) {
+    // Si c'est un tableau, rend chaque élément dans une liste
+    answerContent = (
+      <ul>
+        {dropdown.answer.map((answer, index) => (
+          <li key={index}>{answer}</li>
+        ))}
+      </ul>
+    );
+  } else {
+    // Si c'est une chaîne de caractères, affiche simplement la réponse
+    answerContent = <p>{dropdown.answer}</p>;
+  }
+
+  return (
+    <div className={`faq ${isOpen ? 'open' : ''}`}>
+      <div className="faq-question" onClick={toggleDropdown}>
+        {dropdown.question}
+        <FontAwesomeIcon className={isOpen ? "rotateOpeningIcon _active " : "rotateClosingIcon"} icon={faChevronDown} />
+      </div>
+      {isOpen && (
+        <div className="faq-answer">
+          {answerContent}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Dropdown;

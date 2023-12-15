@@ -1,54 +1,32 @@
-.rotateOpeningIcon {
-    animation: on 0.35s forwards;
-}
-
-@keyframes on {
-    from {rotate:90deg}
-    to {rotate: 0deg}
-}
-
-.rotateClosingIcon {
-    animation: off 0.35s forwards;
-}
-
-@keyframes off {
-    from {rotate:90deg}
-    to {rotate: 180deg}
-}
-
-.dropdown {
-    border: 1px solid red;
-}
-  #panel {
-    border-radius: 5px;
+.faqDropdown {
     background: #ff6060;
-      position: relative;
-      font-size: calc(9px + 1vw);
-      padding: 12px;
-      z-index: 100;
-      color: white;
-      display: flex;
-      flex-direction: row;
-      align-items: normal;
-      justify-content: space-between;
-
+    border-radius: 5px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  .advanced-search {
-      
-   width: 100%;
-   background: #f6f6f6;
-   text-align: center;
-   margin-bottom: -100%;
-   transform: translateY(-100%);
-   transition: transform 0.35s;
-  }
-  
-  .advanced-search._active {
-    transform: translateY(0px);
-  }
+    position: relative;
 
-  .rotateOpeningIcon._active {
-    transform: translateY(0px);
-  }
+    &__question {
+        position: relative;
+        font-size: 20px;
+        transition: all 0.4s ease;
+        color : white;
+        display: flex;
+        flex-direction: row;
+        align-items: normal;
+        justify-content: space-between;
+
+        .chevron-icon{
+            transition: transform 0.3s ease;
+      
+        }
+
+    }
+
+    &__answer {
+        padding: 10px;
+        transition: all 0.5s ease;
+        background-color: #F6F6F6 ;
+        color:#ff6060;
+    }
+
+   
+}

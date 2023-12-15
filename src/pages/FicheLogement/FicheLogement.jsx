@@ -3,24 +3,20 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-//import faq
 
 import "./FicheLogement.scss";
-
 
 // import components
 import Tags from '../../components/Tags/Tags';
 import RatingStars from '../../components/RatingStars/RatingStars';
-import Description from '../../components/Description/Description';
-import Equipements from '../../components/Equipements/Equipements';
+import Dropdown from '../../components/Dropdown/Dropdown';
+
 
 import Error from '../Error/Error';
 
 
 const FicheLogement = () => {
   let { id } = useParams();
-  
-  
   
   const [annonce, setAnnonce] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
@@ -60,7 +56,17 @@ const FicheLogement = () => {
     return (<Error />); // Ou une autre indication de chargement
   }
 
+  const DropdownDescription = {
+    question: "description",
+    answer: annonce.description,
+  };
+
+  const DropdownEquipement = {
+    question: "equipement",
+    answer: annonce.equipments,
+  };
   
+
  
   return (
     <div className='logement'>
@@ -119,10 +125,11 @@ const FicheLogement = () => {
             
             <div className="flex">
               <div className='width-50'>
-                <Description  description={annonce.description} />
+              <Dropdown dropdown={DropdownDescription}/>
               </div>
               <div className="width-50">
-                <Equipements  equipments={annonce.equipments} />
+              <Dropdown dropdown={DropdownEquipement}/>
+
               </div>
             </div>
           
